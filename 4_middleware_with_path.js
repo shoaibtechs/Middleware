@@ -27,8 +27,20 @@ app.get("/", (req,res)=>{
 
 })
 
+
+
 app.get("/random", (req, res)=>{
 
     res.send("The Random Page")
 
 })
+
+
+
+app.use((req, res)=>{
+
+    res.status(404).send("Page Not Found ");
+
+
+})
+
