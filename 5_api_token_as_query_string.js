@@ -2,11 +2,19 @@ const express = require("express");
 const app = express();
 const port = 8080;
 
+
+
+
 app.listen(port, (req, res)=>{
 
     console.log(`The server is listenign atport ${port}`);
 
 })
+
+
+
+
+
 
 
 app.use("/api", (req, res, next)=>{
@@ -15,7 +23,7 @@ app.use("/api", (req, res, next)=>{
 
     if(token === "giveaccess")
     {
-        next();
+        return next();
 
     }
 
@@ -24,9 +32,6 @@ app.use("/api", (req, res, next)=>{
 
 
 })
-
-
-
 
 
 app.get("/", (req,res)=>{
@@ -41,5 +46,22 @@ app.get("/api", (req, res)=>{
 
 
     res.send("Access Granted");
+
+})
+
+
+
+app.get("/api/products", (req, res)=>{
+
+    res.send("Access Granted from 2 ");
+
+
+})
+
+
+app.use((req, res)=>{
+
+
+    res.send("Page Not Found!!");
 
 })
